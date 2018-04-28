@@ -1,0 +1,48 @@
+---
+title: "Wine Party"
+date: "Feb 20 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(data.table)
+library(tufte)
+
+wine <- fread("https://raw.githubusercontent.com/JackStat/PracticalDataScience/master/data/winemag-data-130k-v2.csv")
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Wine
+
+wine dataset. 
+
+```{r, echo=FALSE}
+main1 <- filter(wine, country == "France") %>%
+  top_n(n=15)
+```
+head(main1)
+
+I filtered the dataset to only have france 
+
+
+```{r, echo=FALSE}
+ggplot(main1, aes(x=variety)) +
+  geom_bar()
+```
+
+
+I am going to see a table for price'
+```{r, echo=FALSE}
+ggplot(main1, aes(x=price)) +
+  geom_bar()
+```
+
+```{r, echo=FALSE}
+ggplot(main1, aes(x=taster_name)) +
+  geom_bar()
+```
+
